@@ -1,21 +1,34 @@
-#include <iostream>
+#include "Referee.h"
 #include "Player.h"
 #include "Human.h"
 #include "Computer.h"
-#include "Referee.h"
 
-using namespace std;
+#include <iostream>
 
 int main() {
-    Player* player1 = new Human("Alice");
+    Referee referee;
+    Player* player1 = new Human("Josh");
     Player* player2 = new Computer();
 
-    Referee referee;
-    Player* winner = referee.refGame(player1, player2);
+    while (true) {
+        std::cout << "Player 1 (" << player1->getName() << "):" << std::endl;
+        Move* move1 = player1->makeMove();
 
-    if (winner != nullptr) {
-        cout << "The winner is " << winner->getName() << endl;
-    } else {
-        cout << "It's a tie!" << endl;
+        std::cout << "Player 2 (" << player2->getName() << "):" << std::endl;
+        Move* move2 = player2->makeMove();
+
+        int result = move1->compare(move2);
+
+        if (result == 1) {
+            std::cout << player1->getName() << " wins!" << std::endl;
+            break;
+        } else if (result == -1) {
+            std::cout << player2->getName() << " wins!" << std::endl;
+            break;
+        } else {
+            std::cout << "Tie!" << std::endl;
+        }
     }
+
+    return 0;
 }

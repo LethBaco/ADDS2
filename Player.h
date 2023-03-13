@@ -2,13 +2,14 @@
 #define PLAYER_H
 
 #include <string>
+#include "Move.h"
 
 using namespace std;
 
 class Player {
 public:
-    virtual char makeMove() = 0;
+    virtual Move* makeMove() = 0;
     virtual string getName() = 0;
 };
 
-#endif // PLAYER_H
+#endif //PLAYER_H

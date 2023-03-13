@@ -1,15 +1,11 @@
 #include "Computer.h"
-#include <cstdlib>
+#include "Move.h"
+#include "Rock.h"
 
-using namespace std;
-
-Computer::Computer() {}
-
-char Computer::makeMove() {
-    return 'R';
+Move* Computer::makeMove(){
+    return new Rock();
 }
 
-string Computer::getName()
-{
+std::string Computer::getName(){
     return "Computer";
 }
